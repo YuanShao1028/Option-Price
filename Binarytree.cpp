@@ -28,33 +28,9 @@ void BinaryTree::print_var()
     
 }
 
-void BinaryTree::set_payoff(PayOff &payoff_)
-{
-    
-    payoff = payoff_;
-}
 
 
-void BinaryTree::forward_naive()
-{
-    leaves.resize(steps + 1);
-    double init = log(Spot);
-    for(long i = 0; i <= steps; ++i)
-    {
-        
-        leaves[i].resize(i + 1);
-        double cur = (i * T) / steps;
-        double drift = (r - d - 0.5 * 0.5 * Vol) * cur;
-        double cur_spot = init + drift;
-        double changed = Vol * sqrt(T / steps);
-        long k = 0;
-        for(long j = -i; j <= i; j += 2, ++k )
-        {
-            leaves[i][k].first = exp(cur_spot + j * changed);
-        }
-    }
-    
-}
+
 
 
 void BinaryTree::forward()
@@ -79,24 +55,7 @@ void BinaryTree::forward()
 }
 
 
-void BinaryTree::backward_naive()
-{
-    
-    for(int i = 0; i < leaves[steps].size(); i++)
-    {
-       // cout<<"spot"<<leaves[steps][i].first<<endl;
-        leaves[steps][i].second = payoff(leaves[steps][i].first);
-        
-    }
-    for(long i = steps - 1; i >= 0; --i)
-    {
-        for(int k = 0; k <= i; ++k)
-        {
-            leaves[i][k].second = (discount * 0.5) * (leaves[i + 1][k].second + leaves[i + 1][k + 1].second);
-        }
-    }
-    
-}
+
 
 
 void BinaryTree::backward()

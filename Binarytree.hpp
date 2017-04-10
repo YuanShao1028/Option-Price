@@ -35,9 +35,6 @@ private:
 public:
 
     BinaryTree(double Spot_, double r_, double d_, double Vol_, long steps_, double T_, PayOff &payoff);
-    void forward_naive();
-    void backward_naive();
-    void set_payoff(PayOff &payoff_);
     void forward();
     void backward();
     double getPrice();
