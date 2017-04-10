@@ -127,26 +127,26 @@ int main(int argc, const char * argv[]) {
     
     if(IsCall)
     {
-        for(int i = 0; i <= spot; ++i){
-        BinaryTree* tree = new BinaryTree(i, r, d, Vol, steps, expire,payoff1);
-        //tree.print_var();
+        
+        BinaryTree* tree = new Europe_Tree(spot, r, d, Vol, steps, expire,payoff1);
+        tree->print_var();
         tree->forward();
        // tree.print_leaves(true);
         tree->backward();
        // tree.print_leaves(false);
-        cout<<"spot : "<<i<<"  price : "<<tree->getPrice()<<endl;
+        cout<<"spot : "<<spot<<"  price : "<<tree->getPrice()<<endl;
             result.push_back(tree->getPrice());
-        }
+        
         
         }
     else{
-        BinaryTree tree = BinaryTree(spot, r, d, Vol, steps, expire,payoff2);
-        tree.print_var();
-        tree.forward();
-        tree.print_leaves(true);
-        tree.backward();
-        tree.print_leaves(false);
-        cout<<"price:"<<tree.getPrice()<<endl;
+        BinaryTree* tree = new America_Tree(spot, r, d, Vol, steps, expire,payoff2);
+        tree->print_var();
+        tree->forward();
+        tree->print_leaves(true);
+        tree->backward();
+        tree->print_leaves(false);
+        cout<<"price:"<<tree->getPrice()<<endl;
     }
     
     

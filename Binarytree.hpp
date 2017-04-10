@@ -18,7 +18,7 @@ using namespace std;
 
 class BinaryTree
 {
-private:
+protected:
     double Spot;
     double r;
     double d;
@@ -35,8 +35,8 @@ private:
 public:
 
     BinaryTree(double Spot_, double r_, double d_, double Vol_, long steps_, double T_, PayOff &payoff);
-    void forward();
-    void backward();
+    virtual void forward();
+    virtual void backward();
     double getPrice();
     void print_leaves(bool fst);
     double get_discount();
@@ -46,6 +46,24 @@ public:
 
 };
 
+class America_Tree : public BinaryTree
+{
+public:
+    America_Tree(double Spot_, double r_, double d_, double Vol_, long steps_, double T_, PayOff &payoff);
+    virtual void forward();
+    virtual void backward();
+    virtual ~America_Tree() {};
+};
+
+
+class Europe_Tree : public BinaryTree
+{
+public:
+    Europe_Tree(double Spot_, double r_, double d_, double Vol_, long steps_, double T_, PayOff &payoff);
+    virtual void forward();
+    virtual void backward();
+    virtual ~Europe_Tree() {};
+};
 
 #endif /* Binarytree_hpp */
 
