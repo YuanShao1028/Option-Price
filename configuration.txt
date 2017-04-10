@@ -1,0 +1,8 @@
+expire : 0.5
+Vol : 0.2
+steps : 5
+r : 0.1
+d : 0.05
+spot : 21
+strike : 20
+IsCall : 1
