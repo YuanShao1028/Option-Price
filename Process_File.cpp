@@ -47,7 +47,7 @@ unordered_map<string,string> read_configuration(string filename)
 void print_map(unordered_map<string,string> map)
 {
     for(auto i = map.begin(); i != map.end(); ++i)
-        cout<<"key : "<<i->first<<"value : "<<i->second<<endl;
+        cout<<i->first<<"   "<<i->second<<endl;
 }
 
 bool get_double(unordered_map<string,string> map, double &target, string key)

@@ -37,9 +37,6 @@ void BinaryTree::forward()
     {
         
         leaves[i].resize(i + 1);
-        //double cur = (i * T) / steps;
-        //double drift = (r - d - 0.5 * 0.5 * Vol) * cur;
-        //double cur_spot = init + drift;
         double changed = log(ascend);
         long k = 0;
         for(long j = -i; j <= i; j += 2, ++k )
@@ -162,9 +159,6 @@ void America_Tree::forward()
     {
         
         leaves[i].resize(i + 1);
-        //double cur = (i * T) / steps;
-        //double drift = (r - d - 0.5 * 0.5 * Vol) * cur;
-        //double cur_spot = init + drift;
         double changed = log(ascend);
         long k = 0;
         for(long j = -i; j <= i; j += 2, ++k )
@@ -186,7 +180,7 @@ void America_Tree::backward()
         {
             double discounted_value = (discount) * (leaves[i + 1][k+1].second * ascending_prob + leaves[i + 1][k].second * (1 - ascending_prob));
             double paynow = payoff(leaves[i][k].first);
-            cout<<"step : "<<i<<" node : "<<k<<" discount_v : "<<discounted_value<<"paynow : "<<paynow<<endl;
+           // cout<<"step : "<<i<<" node : "<<k<<" discount_v : "<<discounted_value<<"paynow : "<<paynow<<endl;
             leaves[i][k].second = (discounted_value >= paynow ? discounted_value : paynow);
         }
     }
