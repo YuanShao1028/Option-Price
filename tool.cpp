@@ -28,7 +28,6 @@ double phi(double n, double m, float p)
     double sum = 0;
     for(int i = 0; i <= n; ++i)
     {
-        // cout <<i<<"   "<<Comb(m, i)<<"   "<<powf(p, m - i) * powf( 1 - p, i)<<endl;
         sum += Comb(m, i) * powf(p, m - i) * powf( 1 - p, i);
     }
     return sum;

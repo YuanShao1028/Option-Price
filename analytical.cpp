@@ -36,11 +36,7 @@ float analytical(double T,
         last_row[i] = price;
         price *= powf(down, 2);
     }
-  //  for(int i = 0; i < last_row.size(); ++i)
-   // {
-     //   cout<<last_row[i]<<" ";
-       // cout<<endl;
-    //}
+
     for(int i = 0; i < last_row.size(); ++i)
     {
         last_row[i] = last_row[i] - strike;
@@ -49,12 +45,7 @@ float analytical(double T,
         alpha = i;
 
     }
-    //for(int i = 0; i < last_row.size(); ++i)
-    //{
-      //  cout<<last_row[i]<<" ";
-        //cout<<endl;
-    //}
-    //cout<<"alpha : "<<alpha<<endl;
+
     result = (spot / powf(eta, steps)) * phi(alpha, steps, q1) - (strike / powf(rho, steps)) * phi(alpha, steps, q);
     return result;
     
